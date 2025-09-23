@@ -1,0 +1,20 @@
+name: Classification Feedback Agent
+description: Raccoglie feedback correttivo sui livelli di rischio assegnati.
+version: "0.1.0"
+endpoints:
+  - method: POST
+    path: /submit_feedback
+    description: Submit corrective feedback on assigned risk levels
+input:
+  - system_name
+  - original_risk
+  - corrected_risk
+  - justification
+  - reviewer
+output:
+  - status
+  - entry
+events:
+  - from: RISK_CLASSIFIED
+    to: FEEDBACK_UPDATED
+
