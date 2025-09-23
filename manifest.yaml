@@ -1,0 +1,5 @@
+name: Risk Classifier Agent
+description: Classifica un sistema AI secondo il rischio definito dall'AI Act.
+version: 0.1.0
+ruleset_path: /workspace/ruleset/rules.yaml
+ground_truth_store: /workspace/data/ground_truth.yaml

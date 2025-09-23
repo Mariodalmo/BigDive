@@ -1,0 +1,36 @@
+scenarios:
+  biometric_high:
+    input:
+      qualified: true
+      has_biometric: true
+      is_critical: false
+      affects_rights: false
+    expected:
+      risk_level: high
+
+  unqualified_excluded:
+    input:
+      qualified: false
+      has_biometric: false
+      is_critical: false
+      affects_rights: false
+    expected:
+      risk_level: excluded
+
+  affects_rights_medium:
+    input:
+      qualified: true
+      has_biometric: false
+      is_critical: false
+      affects_rights: true
+    expected:
+      risk_level: medium
+
+  default_low:
+    input:
+      qualified: true
+      has_biometric: false
+      is_critical: false
+      affects_rights: false
+    expected:
+      risk_level: low
