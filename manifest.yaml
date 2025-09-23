@@ -1,0 +1,45 @@
+name: FRIA Generator Agent
+description: Genera un documento PDF di FRIA a partire dalla classificazione di rischio.
+version: 0.1.0
+entrypoint: app.main:app
+type: fastapi
+
+inputs:
+  - name: system_name
+    type: string
+    required: true
+  - name: risk_level
+    type: string
+    required: true
+  - name: justification
+    type: string
+    required: true
+  - name: fairness_notes
+    type: string
+    required: false
+  - name: explainability_notes
+    type: string
+    required: false
+  - name: oversight_notes
+    type: string
+    required: false
+
+outputs:
+  - name: fria_pdf
+    type: file
+    description: Percorso del PDF generato (o HTML fallback)
+
+events:
+  - name: generate_fria
+    route: /generate_fria
+    method: POST
+
+dependencies:
+  python:
+    - fastapi>=0.111
+    - uvicorn>=0.30
+    - jinja2>=3.1
+    - pdfkit>=1.0
+    - weasyprint>=62.0
+    - xhtml2pdf>=0.2
+
