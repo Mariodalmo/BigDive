@@ -1,0 +1,73 @@
+name: orchestration-manager
+description: Coordina l'intero flusso tra gli agenti tramite logica Saga.
+version: 0.1.0
+
+steps:
+  - name: use_case
+    produces:
+      - event: risk_classify.requested
+        when: success
+    consumes:
+      - event: use_case.completed
+      - event: use_case.failed
+    compensation:
+      on_fail:
+        action: flag
+        emits:
+          - event: case.failed
+
+  - name: risk_class
+    produces:
+      - event: fria.requested
+        when: success
+    consumes:
+      - event: risk_class.completed
+      - event: risk_class.failed
+    compensation:
+      on_fail:
+        action: rollback
+        steps:
+          - use_case
+        emits:
+          - event: compensate.use_case
+          - event: case.failed
+
+  - name: fria
+    produces:
+      - event: case.completed
+        when: success
+    consumes:
+      - event: fria.completed
+      - event: fria.failed
+    compensation:
+      on_fail:
+        action: rollback
+        steps:
+          - risk_class
+        emits:
+          - event: compensate.risk_class
+          - event: case.failed
+
+  - name: complete
+    produces: []
+    consumes:
+      - event: case.completed
+      - event: case.failed
+
+contracts:
+  commands:
+    - name: run_use_case
+      emits: risk_classify.requested
+    - name: run_risk_classifier
+      emits: fria.requested
+    - name: run_fria
+      emits: case.completed
+    - name: compensate_use_case
+      emits: compensate.use_case
+    - name: compensate_risk_class
+      emits: compensate.risk_class
+    - name: emit_case_failed
+      emits: case.failed
+    - name: emit_case_completed
+      emits: case.completed
+
