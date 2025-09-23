@@ -1,0 +1,36 @@
+rules:
+  - name: Excluded if not qualified
+    when:
+      qualified: false
+    risk: excluded
+    reason: "System is out-of-scope (not qualified under AI Act)."
+
+  - name: High risk for biometric systems
+    when:
+      qualified: true
+      has_biometric: true
+    risk: high
+    reason: "Biometric identification/categorization is high-risk under AI Act."
+
+  - name: High risk for critical infrastructure
+    when:
+      qualified: true
+      is_critical: true
+    risk: high
+    reason: "Safety/critical infrastructure use indicates high-risk."
+
+  - name: Medium risk if affects fundamental rights
+    when:
+      qualified: true
+      affects_rights: true
+    risk: medium
+    reason: "Potential impact on fundamental rights; treat as medium risk."
+
+  - name: Default low risk when qualified
+    when:
+      qualified: true
+      has_biometric: false
+      is_critical: false
+      affects_rights: false
+    risk: low
+    reason: "Qualified but no high/medium risk factors present."
