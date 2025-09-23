@@ -1,0 +1,12 @@
+name: Human Oversight Simulator
+description: Simula la revisione umana di una classificazione ad alto rischio.
+events:
+  consumes:
+    - EXPLANATION_PROVIDED
+  produces:
+    - OVERSIGHT_DECISION
+endpoints:
+  - method: POST
+    path: /human_review
+    request: {case_id: string, risk_level: string, justification: string?, explanation: object?}
+    response: {decision: string, reviewer: string, comments: string}
