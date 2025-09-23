@@ -1,0 +1,27 @@
+name: Regulation Watchdog Agent
+description: Monitora e registra nuove fonti normative per aggiornare il grafo della conoscenza.
+version: 0.1.0
+
+statuses:
+  - pending
+  - processed
+
+events:
+  - name: NEW_DOCUMENT_AVAILABLE
+    description: Un nuovo documento normativo è stato registrato ed è in attesa di elaborazione.
+    emits_status: pending
+    leads_to:
+      - KNOWLEDGE_UPDATED
+  - name: KNOWLEDGE_UPDATED
+    description: Le embedding e il grafo della conoscenza sono stati aggiornati per il documento.
+    emits_status: processed
+
+endpoints:
+  - method: POST
+    path: /update_knowledge
+    input: list of documents with title, url, type
+    behavior: Stores metadata and marks documents as pending for embedding/graph update
+  - method: GET
+    path: /knowledge
+    behavior: Returns all known documents and their statuses
+
