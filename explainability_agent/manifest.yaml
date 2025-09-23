@@ -1,0 +1,28 @@
+name: Explainability Agent
+description: Fornisce spiegazioni delle decisioni di classificazione del rischio.
+version: 1.0.0
+service:
+  type: http
+  endpoint: /explain
+  method: POST
+events:
+  consumes:
+    - RISK_CLASSIFIED
+  produces:
+    - EXPLANATION_PROVIDED
+payloads:
+  request:
+    example:
+      classification: HIGH
+      risk_score: 0.92
+      features:
+        amount: 3500
+        num_prior_incidents: 3
+        velocity: 1.2
+  response:
+    example:
+      impact_scores:
+        amount: 0.55
+        num_prior_incidents: 0.30
+        velocity: 0.15
+      summary: "classification: HIGH; risk_score: 0.920. Top contributors: amount (55.0%), num_prior_incidents (30.0%), velocity (15.0%)"
