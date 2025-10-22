@@ -1,6 +1,6 @@
 ### AI Act Risk Assessment Report
 
-- Generated at: 2025-10-22 10:37:55Z
+- Generated at: 2025-10-22 13:39:28Z
 - System: TalentScreen AI
 - Identified as AI: True
 
