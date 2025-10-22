@@ -1,0 +1,99 @@
+{
+  "system_identified_as_ai": true,
+  "category": "high",
+  "category_reasoning": "Domain and/or use case matches Annex III high-risk areas.",
+  "fria": {
+    "entries": [
+      {
+        "area": "non_discrimination",
+        "risk_level": "high",
+        "notes": "Historical bias in hiring data"
+      },
+      {
+        "area": "privacy",
+        "risk_level": "medium",
+        "notes": "PII present and processed"
+      },
+      {
+        "area": "autonomy",
+        "risk_level": "low",
+        "notes": null
+      }
+    ],
+    "overall_risk": "high"
+  },
+  "lifecycle_risks": {
+    "design": [
+      "Personal data processed; GDPR alignment and DPIA may be required."
+    ],
+    "training": [
+      "Dataset representativeness uncertain; potential performance disparity across subgroups."
+    ],
+    "validation": [
+      "Bias and fairness not evaluated; potential discriminatory outcomes."
+    ],
+    "deployment": [],
+    "post_market": [
+      "Model drift and data shifts may degrade performance over time."
+    ]
+  },
+  "recommended_measures": [
+    {
+      "type": "technical",
+      "name": "Conduct bias and fairness evaluation",
+      "description": "Assess disparate impact across protected attributes; document metrics and remediation.",
+      "references": [
+        "AI Act Art. 10",
+        "ISO/IEC 23894"
+      ]
+    },
+    {
+      "type": "technical",
+      "name": "Improve dataset representativeness",
+      "description": "Augment datasets to cover relevant demographics and contexts; document provenance.",
+      "references": [
+        "AI Act Art. 10"
+      ]
+    },
+    {
+      "type": "organizational",
+      "name": "Establish risk management system",
+      "description": "Documented, continuous process covering identification, analysis, mitigation, and monitoring.",
+      "references": [
+        "AI Act Art. 9"
+      ]
+    },
+    {
+      "type": "organizational",
+      "name": "Maintain technical documentation",
+      "description": "Comprehensive documentation of system, datasets, tests, and controls.",
+      "references": [
+        "AI Act Art. 11"
+      ]
+    },
+    {
+      "type": "organizational",
+      "name": "Data minimization and DPIA",
+      "description": "Conduct DPIA and minimize retention of PII",
+      "references": [
+        "GDPR Art. 5",
+        "AI Act Art. 10"
+      ]
+    }
+  ],
+  "compliance_requirements": [
+    "Risk management system (Art. 9)",
+    "Data governance and management (Art. 10)",
+    "Technical documentation (Art. 11)",
+    "Record-keeping and logging (Art. 12)",
+    "Transparency to users (Art. 13)",
+    "Human oversight (Art. 14)",
+    "Accuracy, robustness, cybersecurity (Art. 15)",
+    "Quality management system (Art. 17)",
+    "Conformity assessment (ex-ante)",
+    "CE marking and declaration of conformity",
+    "Registration in EU high-risk database"
+  ],
+  "registration_required": true,
+  "timestamp": "2025-10-22T13:39:28.534607Z"
+}

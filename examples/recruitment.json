@@ -1,0 +1,45 @@
+{
+  "system": {
+    "name": "TalentScreen AI",
+    "overview": "NLP and ML-based system that screens resumes and ranks candidates for interview shortlisting.",
+    "techniques": ["NLP", "machine learning"],
+    "domain": "recruitment",
+    "use_cases": ["candidate screening", "resume parsing", "ranking"],
+    "inputs": ["CV text", "structured candidate profiles"],
+    "outputs": ["scores", "ranked list"],
+    "human_in_the_loop": true,
+    "autonomous_decision_making": false,
+    "data_sources": ["historical hiring decisions", "public CV datasets"]
+  },
+  "intended_purpose": "Assist HR teams in screening large applicant pools.",
+  "users": ["HR analysts", "recruiters"],
+  "affected_persons": ["job applicants"],
+  "control_context": {
+    "human_oversight": "approval",
+    "supervision_description": "HR must approve shortlists before contacting candidates.",
+    "logging": true,
+    "auditability": "partial",
+    "xai_available": true,
+    "security_hardening": ["role-based access control", "encrypted storage"],
+    "dataset_profile": {
+      "representative": false,
+      "bias_evaluated": false,
+      "pii_present": true,
+      "num_samples": 50000,
+      "domain_coverage": "Tech and finance roles in EU"
+    }
+  },
+  "fria": [
+    {"area": "non_discrimination", "risk_level": "high", "notes": "Historical bias in hiring data"},
+    {"area": "privacy", "risk_level": "medium", "notes": "PII present and processed"},
+    {"area": "autonomy", "risk_level": "low"}
+  ],
+  "additional_controls": [
+    {
+      "type": "organizational",
+      "name": "Data minimization and DPIA",
+      "description": "Conduct DPIA and minimize retention of PII",
+      "references": ["GDPR Art. 5", "AI Act Art. 10"]
+    }
+  ]
+}
