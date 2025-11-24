@@ -1,0 +1,10 @@
+{
+  "capture_gamma": "Sony S-Log3",
+  "capture_gamut": "S-Gamut3.Cine",
+  "camera": "Sony FX6",
+  "white_balance_kelvin": 5600,
+  "iso": 800,
+  "exposure_offset": 0.3,
+  "lighting_notes": "Luce mista tungsteno + 1/4 CTO sulle finestre",
+  "shooting_conditions": "Interior notte con fill LED morbido"
+}
