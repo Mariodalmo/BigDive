@@ -65,3 +65,19 @@ python -m resolve_grading.cli generate \
 ## Esempi
 
 - `examples/footage_slog3.json`: profilo pronto per girato Sony S-Log3, utilizzabile con `--footage-json`.
+
+## UI interattiva (Streamlit)
+
+Per utilizzare un'interfaccia visuale:
+
+```bash
+pip install streamlit
+streamlit run streamlit_app.py
+```
+
+La UI consente di:
+
+- scegliere rapidamente il preset e consultare note/look raccomandati;
+- impostare profilo del girato e parametri timeline tramite form;
+- inserire override JSON per modificare qualsiasi parametro del preset;
+- scaricare il JSON della configurazione e la LUT `.cube` con un click.
